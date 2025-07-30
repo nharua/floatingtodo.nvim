@@ -88,11 +88,12 @@ local function open_floating_file(opts)
 		silent = true,
 		callback = function()
 			if vim.api.nvim_get_option_value("modified", { buf = buf }) then
-				vim.notify("save your changes pls", vim.log.levels.WARN)
-			else
-				vim.api.nvim_win_close(0, true)
-				win = nil
+				vim.api.nvim_buf_call(buf, function()
+					vim.cmd("write")
+				end)
 			end
+			vim.api.nvim_win_close(0, true)
+			win = nil
 		end,
 	})
 end
