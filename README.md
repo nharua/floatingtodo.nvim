@@ -6,7 +6,7 @@ a globally accessible buffer for managing tasks.
 
 ```lua
 return {
-  "vimichael/floatingtodo.nvim",
+  "nharua/floatingtodo.nvim",
   config = function()
     require("floatingtodo").setup({
       target_file = "~/notes/todo.md",
